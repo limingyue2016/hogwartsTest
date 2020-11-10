@@ -14,7 +14,7 @@ public class CalculatorTest extends BaseCase {
 
     @Test
     @Disabled
-    void testCalculator() {
+    void calculatorTest() {
         assertAll("testCalculator",
                 () -> assertEquals(calculator.add(1, 1), 2),
                 () -> assertEquals(calculator.subtract(1, 1), 0),
@@ -27,27 +27,27 @@ public class CalculatorTest extends BaseCase {
     @Test
     @Order(4)
     @Tag("calculator")
-    void testAdd() {
+    void addTest() {
         assertEquals(calculator.add(1, 1), 2);
     }
 
     @Test
     @Order(3)
     @Tag("calculator")
-    void testSubtract() {
+    void subtractTest() {
         assertEquals(calculator.subtract(1, 1), 0);
     }
 
     @Test
     @Order(2)
     @RepeatedTest(3)
-    void testMultiply() {
+    void multiplyTest() {
         assertEquals(calculator.multiply(1, 1), 1);
     }
 
     @Test
     @Order(1)
-    void testDivide() {
+    void divideTest() {
         assertEquals(calculator.divide(1, 1), 1);
     }
 
