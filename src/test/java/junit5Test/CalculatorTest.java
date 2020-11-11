@@ -12,8 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("DisplayName")
 @Epic("计算器测试用例")
 @Feature("计算器功能测试用例")
-@Link("https://github.com/")
-@Link(name = "github", type = "mylink")
+@Link(name = "github", type = "mylink", url = "https://github.com/")
 public class CalculatorTest extends BaseCase {
     private Calculator calculator = new Calculator();
 
