@@ -13,6 +13,7 @@ public class BaseCase {
     @BeforeAll
     static void setup() {
 //        System.setProperty("webdriver.chrome.driver", "/Users/cym/Documents/software/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
