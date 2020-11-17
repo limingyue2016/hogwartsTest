@@ -18,18 +18,19 @@ public class MainPage extends BasePage {
     public String url = "https://work.weixin.qq.com/wework_admin/frame";
 
     public MainPage() throws IOException {
+        // mac上需要注释掉
+        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
+        driver = new ChromeDriver();
         // 登录企业微信
         this.beforeAll();
     }
 
     void beforeAll() throws IOException {
         File file = new File("cookies.yaml");
-
         if (file.exists()) {
             //利用cookie复用session登录
-            driver = new ChromeDriver();
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             driver.get(url);
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
             ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
             TypeReference typeReference = new TypeReference<List<HashMap<String, Object>>>() {

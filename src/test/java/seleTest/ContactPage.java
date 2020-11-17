@@ -13,6 +13,10 @@ public class ContactPage extends BasePage {
         super(driver);
     }
 
+    public ContactPage() {
+
+    }
+
     // 添加部门
     public ContactPage departmentAdd(String departName) {
         click(By.linkText("添加"));
