@@ -74,11 +74,11 @@
             <version>2.11.2</version>
         </dependency>
         <!--appium-java-->
-<!--        <dependency>-->
-<!--            <groupId>com.github.appium</groupId>-->
-<!--            <artifactId>java-client</artifactId>-->
-<!--            <version>7.3.0</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.github.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>7.3.0</version>
+        </dependency>
         <!--appium-java-->
         <dependency>
             <groupId>io.appium</groupId>

@@ -15,22 +15,23 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class MainPage extends BasePage {
-    public String url = "https://work.weixin.qq.com/wework_admin/frame";
+    public static String url = "https://work.weixin.qq.com/wework_admin/frame";
 
     public MainPage() throws IOException {
         // mac上需要注释掉
-        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
+//        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
         driver = new ChromeDriver();
         // 登录企业微信
         this.beforeAll();
     }
 
-    void beforeAll() throws IOException {
+    static void beforeAll() throws IOException {
         File file = new File("cookies.yaml");
         if (file.exists()) {
             //利用cookie复用session登录
             driver.get(url);
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            driver.manage().window().maximize();
 
             ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
             TypeReference typeReference = new TypeReference<List<HashMap<String, Object>>>() {
@@ -50,7 +51,7 @@ public class MainPage extends BasePage {
         }
     }
 
-    private void needLogin() {
+    private static void needLogin() {
         driver.get(url);
         try {
             Thread.sleep(15000);
