@@ -16,3 +16,4 @@
 - junit5环境搭建，基础注解使用，assertAll()，并发测试，参数化
 - allure基本使用
 - selenium环境搭建
+- appium环境搭建
