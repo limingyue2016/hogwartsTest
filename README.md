@@ -10,6 +10,7 @@
 
 -  junit5Test
 -  seleTest
+-  appiumTest
 
 ## 知识点
 

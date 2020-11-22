@@ -1,4 +1,4 @@
-package appiumTest;
+package appiumTest.actions;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.functions.ExpectedCondition;
@@ -22,8 +22,15 @@ public class BasePage {
     public AndroidDriver driver;
     public static final String BaseId = "com.tencent.wework:id/";
 
+    public BasePage(AndroidDriver driver) {
+        this.driver = driver;
+    }
+
+    public BasePage() {
+    }
+
     //初始化apk配置
-    public DesiredCapabilities setCa() throws MalformedURLException {
+    public DesiredCapabilities setCa(){
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "zlizk7bi7pjfyhvc");
         capabilities.setCapability("platformName", "Android");
@@ -35,7 +42,7 @@ public class BasePage {
     }
 
     //初始化driver
-    public AndroidDriver setDriver() throws MalformedURLException {
+    public AndroidDriver setDriver(){
         try {
             driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), this.setCa());
 
@@ -92,6 +99,18 @@ public class BasePage {
             System.out.println("元素" + loc.toString() + "找不到");
         }
     }
+    // 获取单个元素文本内容
+    public String getText(By loc){
+        return this.findEle(loc).getText();
+    }
+    // 获取父元素下文本内容
+    public String getTexts(By loc){
+        StringBuilder contents = new StringBuilder();
+        this.findEles(loc).forEach(element->{
+            contents.append(element.getText());
+        });
+        return contents.toString();
+    }
 
     // 获取当前日期
     public static String getCurrentDateTime() {
@@ -123,7 +142,4 @@ public class BasePage {
         String filename = this.getName(name);
         FileUtil.copyFile(screenShotFile, new File(filename));
     }
-    // 打Log方法
-
-
 }
