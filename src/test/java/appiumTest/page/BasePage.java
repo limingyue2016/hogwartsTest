@@ -1,4 +1,4 @@
-package appiumTest.actions;
+package appiumTest.page;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.functions.ExpectedCondition;
@@ -7,49 +7,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 public class BasePage {
     public AndroidDriver driver;
-    public static final String BaseId = "com.tencent.wework:id/";
 
     public BasePage(AndroidDriver driver) {
         this.driver = driver;
-    }
-
-    public BasePage() {
-    }
-
-    //初始化apk配置
-    public DesiredCapabilities setCa(){
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "zlizk7bi7pjfyhvc");
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "10.0");
-        capabilities.setCapability("appPackage", "com.tencent.wework");
-        capabilities.setCapability("appActivity", ".launch.WwMainActivity");
-        capabilities.setCapability("noReset", true);
-        return capabilities;
-    }
-
-    //初始化driver
-    public AndroidDriver setDriver(){
-        try {
-            driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), this.setCa());
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return driver;
     }
 
     // 封装智能等待方法
@@ -99,14 +69,17 @@ public class BasePage {
             System.out.println("元素" + loc.toString() + "找不到");
         }
     }
+
     // 获取单个元素文本内容
-    public String getText(By loc){
+    public String getText(By loc) {
         return this.findEle(loc).getText();
     }
+
     // 获取父元素下文本内容
-    public String getTexts(By loc){
+    public String getTexts(By loc) {
         StringBuilder contents = new StringBuilder();
-        this.findEles(loc).forEach(element->{
+        this.findEles(loc).forEach(element -> {
+            System.out.println(element);
             contents.append(element.getText());
         });
         return contents.toString();
