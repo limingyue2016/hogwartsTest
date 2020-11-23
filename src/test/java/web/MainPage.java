@@ -1,4 +1,4 @@
-package seleTest;
+package web;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

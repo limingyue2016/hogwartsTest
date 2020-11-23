@@ -1,7 +1,7 @@
-package appiumTest.testcase;
+package app.testcase;
 
-import appiumTest.page.App;
-import appiumTest.page.MainPage;
+import app.page.App;
+import app.page.MainPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 

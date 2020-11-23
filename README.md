@@ -9,8 +9,8 @@
 #### test
 
 -  junit5Test
--  seleTest
--  appiumTest
+-  web
+-  app
 
 ## 知识点
 

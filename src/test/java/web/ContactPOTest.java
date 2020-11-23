@@ -1,4 +1,4 @@
-package seleTest;
+package web;
 
 
 import org.junit.jupiter.api.*;

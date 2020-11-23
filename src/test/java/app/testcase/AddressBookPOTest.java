@@ -1,9 +1,6 @@
-package appiumTest.testcase;
+package app.testcase;
 
-import appiumTest.page.AddressBookPage;
-import appiumTest.page.App;
-import appiumTest.page.MainPage;
-import org.junit.jupiter.api.BeforeAll;
+import app.page.AddressBookPage;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 

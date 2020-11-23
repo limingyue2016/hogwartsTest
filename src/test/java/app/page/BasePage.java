@@ -1,4 +1,4 @@
-package appiumTest.page;
+package app.page;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.functions.ExpectedCondition;
