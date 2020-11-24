@@ -4,13 +4,14 @@
 
 #### src
 
--  junit5Test
-
+-  junit5
+-  wework.app
+-  wework.web
 #### test
 
--  junit5Test
--  web
--  app
+-  junit5
+-  wework.app
+-  wework.web
 
 ## 知识点
 

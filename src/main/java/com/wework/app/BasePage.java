@@ -1,4 +1,4 @@
-package app.page;
+package com.wework.app;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.functions.ExpectedCondition;

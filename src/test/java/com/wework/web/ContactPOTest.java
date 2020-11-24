@@ -1,6 +1,8 @@
-package web;
+package com.wework.web;
 
 
+import com.wework.web.ContactPage;
+import com.wework.web.MainPage;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;

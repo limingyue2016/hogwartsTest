@@ -1,8 +1,7 @@
-package junit5Test;
+package com.junit5;
 
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
-import org.junit.runner.RunWith;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Epic("计算器测试用例")
 @Feature("计算器功能测试用例")
 @Link(name = "github", type = "mylink", url = "https://github.com/")
-public class CalculatorTest extends BaseCase {
+public class CalculatorTest {
     private Calculator calculator = new Calculator();
 
     @Test

@@ -1,4 +1,4 @@
-package web;
+package com.wework.web;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -71,7 +71,7 @@ public class MainPage extends BasePage {
     }
 
     // 首页-添加成员为入口
-    public ContactPage contact(){
+    public ContactPage contact() {
         click(By.linkText("添加成员"));
 
         return new ContactPage(driver);

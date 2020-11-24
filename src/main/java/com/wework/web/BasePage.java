@@ -1,4 +1,4 @@
-package web;
+package com.wework.web;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,15 +28,15 @@ public class BasePage {
         driver.findElement(by).sendKeys(content);
     }
 
-    String getText(By by){
+    String getText(By by) {
         return driver.findElement(by).getText();
     }
 
-    void clearText(By by){
+    void clearText(By by) {
         driver.findElement(by).clear();
     }
 
-    void hover(By by){
+    void hover(By by) {
         Actions actions = new Actions(driver);
         actions.moveToElement((WebElement) by).perform();
     }

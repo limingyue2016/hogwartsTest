@@ -1,4 +1,4 @@
-package junit5Test;
+package com.junit5;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

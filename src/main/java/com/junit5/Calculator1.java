@@ -1,4 +1,4 @@
-package junit5Test;
+package com.junit5;
 
 /**
  * 1 线程安全问题修复之Synchronized

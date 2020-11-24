@@ -1,7 +1,7 @@
-package app.testcase;
+package com.wework.app;
 
-import app.page.App;
-import app.page.MainPage;
+import com.wework.app.MainPage;
+import com.wework.app.App;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
