@@ -78,13 +78,6 @@
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>7.3.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
-            <version>7.3.0</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>

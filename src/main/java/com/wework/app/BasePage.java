@@ -1,5 +1,6 @@
 package com.wework.app;
 
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.functions.ExpectedCondition;
 import org.aspectj.util.FileUtil;
@@ -7,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.Response;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -114,5 +116,15 @@ public class BasePage {
         File screenShotFile = this.driver.getScreenshotAs(OutputType.FILE);
         String filename = this.getName(name);
         FileUtil.copyFile(screenShotFile, new File(filename));
+    }
+
+    // 执行adb命令
+    public String executeShellCommand(String cmd) {
+        String result = String.valueOf(driver.execute(cmd));
+        return result;
+    }
+
+    public void pressBack() {
+//        driver.pressKey();
     }
 }

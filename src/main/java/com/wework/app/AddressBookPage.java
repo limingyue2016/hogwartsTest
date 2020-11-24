@@ -14,6 +14,7 @@ public class AddressBookPage extends BasePage {
     private final By searchButton = By.id("i6n");
     private final By searchEditText = By.xpath("//*[@text='搜索']");
     private final By resultText = By.xpath("//android.widget.RelativeLayout//android.view.ViewGroup//android.widget.TextView");
+    private final By resultTextEmpty = By.xpath("//android.widget.FrameLayout//android.widget.ListView");
     private final By backMenu = By.id("i63");
     private final By moreManagement = By.xpath("//*[@text='更多管理']");
 //    private By closeButton=By.xpath("//*[contains(@resource-id, 'gpf') or contains(@resource-id, 'i6d')]");
@@ -40,12 +41,20 @@ public class AddressBookPage extends BasePage {
         return getText(resultText);
     }
 
-    public void clearEmptyDepart(String department) {
-        clickEle(backMenu);
+    public String getResultTextEmpty() {
+        return getText(resultTextEmpty);
+    }
+
+    public void deleteEmptyDepart(String department) {
         clickEle(menu);
-        clickEle(By.xpath("//*[@text=" + department + "]"));
+        clickEle(By.xpath("//*[@text='" + department + "']"));
         clickEle(moreManagement);
         clickEle(departDeleteLocator);
         clickEle(confirmButton);
+        clickEle(closeButton);
+    }
+
+    public void back(String cmd) {
+        executeShellCommand(cmd);
     }
 }

@@ -8,11 +8,13 @@ import org.junit.jupiter.api.BeforeAll;
 public class BaseTest {
     public static MainPage mainPage;
     protected static App app;
+    public static AddressBookPage addressBookPage;
 
     @BeforeAll
     static void beforeAll() {
         app = new App();
         mainPage = app.start();
+        addressBookPage = mainPage.ToAddressBook();
     }
 
     @AfterAll
