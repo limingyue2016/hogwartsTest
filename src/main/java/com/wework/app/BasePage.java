@@ -1,34 +1,49 @@
 package com.wework.app;
 
-import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.functions.ExpectedCondition;
 import org.aspectj.util.FileUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.Response;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class BasePage {
     public AndroidDriver driver;
+    public WebDriverWait wait;
+    private ArrayList<String> blackList;
 
     public BasePage(AndroidDriver driver) {
         this.driver = driver;
     }
 
     // 封装智能等待方法
-    private Boolean waitToDisplayed(final By loc) {
-        Boolean waitDisplayed = false;
-        waitDisplayed = new WebDriverWait(this.driver, 10).until((ExpectedCondition<Boolean>) d -> d.findElement(loc).isDisplayed());
-        return waitDisplayed;
+    private Boolean waitToDisplayed(By loc) {
+        return getWait().until((ExpectedCondition<Boolean>) d -> d.findElement(loc).isDisplayed());
+    }
+
+    public WebDriverWait getWait() {
+        wait = new WebDriverWait(this.driver, 3);
+        return wait;
+    }
+
+    public WebDriverWait getWait(long time) {
+        wait = new WebDriverWait(this.driver, time);
+        return wait;
+    }
+
+    // 异常处理
+    private void handleException() {
     }
 
     // 定位单个元素方法
@@ -125,6 +140,6 @@ public class BasePage {
     }
 
     public void pressBack() {
-//        driver.pressKey();
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.BACK));
     }
 }

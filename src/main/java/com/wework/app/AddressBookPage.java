@@ -7,7 +7,8 @@ public class AddressBookPage extends BasePage {
     private final By menu = By.id("i6i");
     private final By departAddLocator = By.xpath("//*[@text='添加子部门']");
     private final By departDeleteLocator = By.xpath("//*[@text='删除部门']");
-    private final By addEditText = By.xpath("//*[@text='请输入部门名称']");
+    private final By departEditLocator = By.xpath("//*[@text='修改当前部门名称']");
+    private final By addEditText = By.id("blm");
     private final By confirmButton = By.xpath("//*[@text='确定']");
     private final By cancelButton = By.xpath("//*[@text='取消']");
     private final By closeButton = By.id("i6d");
@@ -15,9 +16,7 @@ public class AddressBookPage extends BasePage {
     private final By searchEditText = By.xpath("//*[@text='搜索']");
     private final By resultText = By.xpath("//android.widget.RelativeLayout//android.view.ViewGroup//android.widget.TextView");
     private final By resultTextEmpty = By.xpath("//android.widget.FrameLayout//android.widget.ListView");
-    private final By backMenu = By.id("i63");
     private final By moreManagement = By.xpath("//*[@text='更多管理']");
-//    private By closeButton=By.xpath("//*[contains(@resource-id, 'gpf') or contains(@resource-id, 'i6d')]");
 
     public AddressBookPage(AndroidDriver driver) {
         super(driver);
@@ -45,6 +44,16 @@ public class AddressBookPage extends BasePage {
         return getText(resultTextEmpty);
     }
 
+    public void editDepart(String department, String replacement) {
+        clickEle(menu);
+        clickEle(By.xpath("//*[@text='" + department + "']"));
+        clickEle(moreManagement);
+        clickEle(departEditLocator);
+        sendKeys(addEditText, replacement);
+        clickEle(confirmButton);
+        clickEle(closeButton);
+    }
+
     public void deleteEmptyDepart(String department) {
         clickEle(menu);
         clickEle(By.xpath("//*[@text='" + department + "']"));
@@ -54,7 +63,7 @@ public class AddressBookPage extends BasePage {
         clickEle(closeButton);
     }
 
-    public void back(String cmd) {
-        executeShellCommand(cmd);
+    public void back() {
+        pressBack();
     }
 }
