@@ -12,7 +12,7 @@ public class AddressBookPOTest extends BaseTest {
     @CsvFileSource(resources = "/department.csv", numLinesToSkip = 1)
     void addDepartment(String department) {
         // 添加部门
-        addressBookPage.departmentAdd(department);
+        addressBookPage.addDepart(department);
         // 搜索添加结果
         addressBookPage.searchHandle(department);
         // 断言搜索结果
@@ -24,10 +24,26 @@ public class AddressBookPOTest extends BaseTest {
 
     @ParameterizedTest
     @CsvSource({
+            "运营部门, 运营部门1"
+    })
+    void editDepartment(String department, String replacement) {
+        // 修改部门
+        addressBookPage.editDepart(department, replacement);
+        // 搜索修改结果
+        addressBookPage.searchHandle(replacement);
+        // 断言修改结果
+        String content = addressBookPage.getResultText();
+        assertTrue(content.contains(replacement));
+
+        backAddressBookPage();
+    }
+
+    @ParameterizedTest
+    @CsvSource({
             "运营部门1",
             "运行部门1"
     })
-    void departmentDelete(String department) {
+    void deleteDepartment(String department) {
         // 删除部门
         addressBookPage.deleteEmptyDepart(department);
         // 搜索删除结果
@@ -39,22 +55,6 @@ public class AddressBookPOTest extends BaseTest {
         } else {
             assertEquals("无搜索结果", content);
         }
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-            "运营部门, 运营部门1"
-    })
-    void editDepart(String department, String replacement) {
-        // 修改部门
-        addressBookPage.editDepart(department, replacement);
-        // 搜索修改结果
-        addressBookPage.searchHandle(replacement);
-        // 断言修改结果
-        String content = addressBookPage.getResultText();
-        assertTrue(content.contains(replacement));
-
-        backAddressBookPage();
     }
 
     public void backAddressBookPage() {

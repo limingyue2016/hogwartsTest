@@ -19,7 +19,7 @@ public class MainPage extends BasePage {
 
     public MainPage() throws IOException {
         // mac上需要注释掉
-//        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
         driver = new ChromeDriver();
         // 登录企业微信
         this.beforeAll();
@@ -71,7 +71,7 @@ public class MainPage extends BasePage {
     }
 
     // 首页-添加成员为入口
-    public ContactPage contact() {
+    public ContactPage toContact() {
         click(By.linkText("添加成员"));
 
         return new ContactPage(driver);

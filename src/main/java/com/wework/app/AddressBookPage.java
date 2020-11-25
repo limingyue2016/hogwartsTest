@@ -22,7 +22,7 @@ public class AddressBookPage extends BasePage {
         super(driver);
     }
 
-    public AddressBookPage departmentAdd(String departName) {
+    public AddressBookPage addDepart(String departName) {
         clickEle(menu);
         clickEle(departAddLocator);
         sendKeys(addEditText, departName);
