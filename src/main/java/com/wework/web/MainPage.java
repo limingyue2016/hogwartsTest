@@ -34,10 +34,10 @@ public class MainPage extends BasePage {
             driver.manage().window().maximize();
 
             ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-            TypeReference typeReference = new TypeReference<List<HashMap<String, Object>>>() {
+            TypeReference<List<HashMap<String, Object>>> typeReference = new TypeReference<List<HashMap<String, Object>>>() {
             };
             // 文件中读取cookies
-            List<HashMap<String, Object>> cookies = (List<HashMap<String, Object>>) mapper.readValue(new File("cookies.yaml"), typeReference);
+            List<HashMap<String, Object>> cookies = mapper.readValue(new File("cookies.yaml"), typeReference);
             // 登录信息中添加cookies
             cookies.forEach(cookieMap -> {
                 driver.manage().addCookie(new Cookie(cookieMap.get("name").toString(), cookieMap.get("value").toString()));

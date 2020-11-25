@@ -66,4 +66,8 @@ public class AddressBookPage extends BasePage {
     public void back() {
         pressBack();
     }
+
+    public void testCommand() {
+        executeScriptCommand();
+    }
 }

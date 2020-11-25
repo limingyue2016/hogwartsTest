@@ -1,5 +1,6 @@
 package com.wework.app;
 
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
@@ -14,14 +15,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class BasePage {
     public AndroidDriver driver;
     public WebDriverWait wait;
-    private ArrayList<String> blackList;
+    private final String[] blackList = {"允许", "同意", "始终允许", "我知道了", "取消", "关闭", "继续"};
 
     public BasePage(AndroidDriver driver) {
         this.driver = driver;
@@ -43,7 +43,22 @@ public class BasePage {
     }
 
     // 异常处理
-    private void handleException() {
+    public void handleException() {
+        for (String loc : blackList) {
+            List<WebElement> eles = driver.findElements(By.xpath("//*[@text='" + loc + "']"));
+            if (eles.size() >= 1) {
+                eles.get(0).click();
+            }
+        }
+    }
+
+    // 注册监听并开启监听
+    public void runWatcher() {
+
+    }
+
+    // 停止监听
+    public void stopWatcher() {
     }
 
     // 定位单个元素方法
@@ -51,6 +66,9 @@ public class BasePage {
         WebElement ele = null;
         if (this.waitToDisplayed(loc)) {
             ele = this.driver.findElement(loc);
+        } else {
+            handleException();
+            findEle(loc);
         }
         return ele;
     }
@@ -60,6 +78,9 @@ public class BasePage {
         List<WebElement> eles = null;
         if (this.waitToDisplayed(loc)) {
             eles = this.driver.findElements(loc);
+        } else {
+            handleException();
+            findEles(loc);
         }
         return eles;
     }
@@ -90,16 +111,6 @@ public class BasePage {
     // 获取单个元素文本内容
     public String getText(By loc) {
         return this.findEle(loc).getText();
-    }
-
-    // 获取父元素下文本内容
-    public String getTexts(By loc) {
-        StringBuilder contents = new StringBuilder();
-        this.findEles(loc).forEach(element -> {
-            System.out.println(element);
-            contents.append(element.getText());
-        });
-        return contents.toString();
     }
 
     // 获取当前日期
@@ -137,6 +148,21 @@ public class BasePage {
     public String executeShellCommand(String cmd) {
         String result = String.valueOf(driver.execute(cmd));
         return result;
+    }
+
+    public void executeScriptCommand() {
+        // todo
+        driver.executeScript("mobile: scroll", ImmutableMap.of("direction", "down"));
+    }
+
+
+    public void unlock() {
+        driver.unlockDevice();
+        pressHome();
+    }
+
+    public void pressHome() {
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
     }
 
     public void pressBack() {

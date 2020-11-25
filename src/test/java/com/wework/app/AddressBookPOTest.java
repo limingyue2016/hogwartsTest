@@ -1,5 +1,6 @@
 package com.wework.app;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -8,6 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AddressBookPOTest extends BaseTest {
+    @AfterEach
+    void afterEach() {
+        backAddressBookPage();
+    }
+
     @ParameterizedTest
     @CsvFileSource(resources = "/department.csv", numLinesToSkip = 1)
     void addDepartment(String department) {
@@ -18,8 +24,6 @@ public class AddressBookPOTest extends BaseTest {
         // 断言搜索结果
         String content = addressBookPage.getResultText();
         assertTrue(content.contains(department));
-
-        backAddressBookPage();
     }
 
     @ParameterizedTest
@@ -34,14 +38,11 @@ public class AddressBookPOTest extends BaseTest {
         // 断言修改结果
         String content = addressBookPage.getResultText();
         assertTrue(content.contains(replacement));
-
-        backAddressBookPage();
     }
 
     @ParameterizedTest
     @CsvSource({
-            "运营部门1",
-            "运行部门1"
+            "运营部门1"
     })
     void deleteDepartment(String department) {
         // 删除部门
