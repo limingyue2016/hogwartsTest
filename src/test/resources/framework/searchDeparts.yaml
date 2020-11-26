@@ -1,0 +1,7 @@
+data:
+  - 产品部门
+steps:
+  - find: { id: i6i }
+  - click: {}
+  - find : { id: ex9 }
+  - send_keys: { id: blm }

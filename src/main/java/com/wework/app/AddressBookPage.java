@@ -1,5 +1,6 @@
 package com.wework.app;
 
+import com.wework.core.BasePage;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 

@@ -1,4 +1,4 @@
-package com.wework.app;
+package com.wework.core;
 
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.android.AndroidDriver;
