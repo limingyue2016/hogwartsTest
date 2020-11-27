@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class App {
-    public AndroidDriver driver;
+    public static AndroidDriver driver;
 
     public MainPage start() {
         driver = setDriver();

@@ -17,7 +17,7 @@ public class BaseTest {
     static void beforeAll() {
         app = new App();
         mainPage = app.start();
-//        addressBookPage = mainPage.ToAddressBook();
+        addressBookPage = mainPage.ToAddressBook();
         addressBook = mainPage.ToAddressBookFramework();
     }
 

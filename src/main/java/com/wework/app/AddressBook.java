@@ -1,5 +1,6 @@
 package com.wework.app;
 
+import com.wework.core.App;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,7 @@ public class AddressBook {
     public WebElement currentElement;
 
     public AddressBook(AndroidDriver driver) {
+        // todo 待用
         this.driver = driver;
     }
 
@@ -35,7 +37,7 @@ public class AddressBook {
                         bys.add(By.xpath(value));
                     }
                 });
-                currentElement = this.driver.findElement(bys.get(0));
+                currentElement = App.driver.findElement(bys.get(0));
             }
 
             if (step.containsKey("click")) {
@@ -43,7 +45,7 @@ public class AddressBook {
             }
 
             if (step.containsKey("send_keys")) {
-                currentElement.sendKeys(data.get(0));
+                currentElement.sendKeys("产品部门");
             }
         });
     }

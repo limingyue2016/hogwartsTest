@@ -15,13 +15,12 @@ public class AddressBookTest extends BaseTest {
     @ParameterizedTest
     @MethodSource()
     void searchDepartment(AddressBook search) {
-        System.out.println(search.toString());
         search.run();
     }
 
     static Stream<AddressBook> searchDepartment() throws IOException {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-//        AddressBook addressBook = mapper.readValue(AddressBookTest.class.getResourceAsStream("/framework/searchDeparts.yaml"), AddressBook.class);
+//        AddressBook search = mapper.readValue(AddressBookTest.class.getResourceAsStream("/framework/searchDeparts.yaml"), AddressBook.class);
         AddressBook search = mapper.readValue(new FileInputStream("src/test/resources/framework/searchDeparts.yaml"), AddressBook.class);
         return Stream.of(search);
     }
