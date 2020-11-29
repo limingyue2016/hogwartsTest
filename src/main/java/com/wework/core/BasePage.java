@@ -27,6 +27,10 @@ public class BasePage {
         this.driver = driver;
     }
 
+    public BasePage() {
+
+    }
+
     // 封装智能等待方法
     private Boolean waitToDisplayed(By loc) {
         return getWait().until((ExpectedCondition<Boolean>) d -> d.findElement(loc).isDisplayed());

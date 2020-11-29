@@ -1,24 +1,14 @@
-package com.wework.app;
+package com.wework.framework;
 
 import com.wework.core.App;
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public class AddressBook {
-    public AndroidDriver driver;
-    public List<String> data;
-    public List<HashMap<String, Object>> steps;
+public class AddressBook extends BaseTest{
     public WebElement currentElement;
-
-    public AddressBook(AndroidDriver driver) {
-        // todo 待用
-        this.driver = driver;
-    }
 
     public AddressBook() {
     }
@@ -45,7 +35,7 @@ public class AddressBook {
             }
 
             if (step.containsKey("send_keys")) {
-                currentElement.sendKeys("产品部门");
+                currentElement.sendKeys(getValue(step, "send_keys").toString());
             }
         });
     }
