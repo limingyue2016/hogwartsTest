@@ -1,0 +1,6 @@
+# 搜索过程
+search:
+  - find: { id: i6n }
+  - click: {}
+  - find: { id: gpg }
+  - send_keys: ${ data }

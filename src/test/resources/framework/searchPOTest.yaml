@@ -1,0 +1,5 @@
+data:
+  - 产品部门
+steps:
+  - App: {}
+  - mainPage.toAddressBook: {}

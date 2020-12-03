@@ -8,17 +8,17 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.io.IOException;
 import java.util.List;
 
-public class AddressBookTest extends BaseTest{
+public class ParamsTest extends BaseTest {
     @ParameterizedTest
     @MethodSource()
-    void searchDepartment(AddressBook search) {
+    void searchDepartment(AppSearch search) {
         search.run();
     }
 
-    static List<AddressBook> searchDepartment() throws IOException {
+    static List<AppSearch> searchDepartment() throws IOException {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        AddressBook search = mapper.readValue(AddressBookTest.class.getResourceAsStream("/framework/searchDeparts.yaml"), AddressBook.class);
+        AppSearch search = mapper.readValue(ParamsTest.class.getResourceAsStream("/framework/searchDeparts.yaml"), AppSearch.class);
 //        AddressBook search = mapper.readValue(new FileInputStream("src/test/resources/framework/searchDeparts.yaml"), AddressBook.class);
-        return search.addressBookGenerate();
+        return search.testcaseGenerate();
     }
 }

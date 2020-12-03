@@ -12,7 +12,7 @@ public class MainPage extends BasePage {
     }
 
     // 跳转到通讯录tab
-    public AddressBookPage ToAddressBook() {
+    public AddressBookPage toAddressBook() {
         clickEle(addressBook);
         return new AddressBookPage(driver);
     }

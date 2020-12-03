@@ -25,9 +25,9 @@ public class App {
     //初始化apk配置
     public DesiredCapabilities setCa() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "zlizk7bi7pjfyhvc");
+        capabilities.setCapability("deviceName", "3304cae3");
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "10.0");
+        capabilities.setCapability("platformVersion", "9.0");
         capabilities.setCapability("appPackage", "com.tencent.wework");
         capabilities.setCapability("appActivity", ".launch.WwMainActivity");
         capabilities.setCapability("noReset", true);

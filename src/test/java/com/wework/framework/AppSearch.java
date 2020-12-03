@@ -7,10 +7,10 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AddressBook extends BaseTest{
+public class AppSearch extends BaseTest {
     public WebElement currentElement;
 
-    public AddressBook() {
+    public AppSearch() {
     }
 
     public void run() {

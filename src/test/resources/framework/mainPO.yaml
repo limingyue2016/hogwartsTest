@@ -1,0 +1,4 @@
+# driver的初始化
+steps:
+  - find: { xpath: "//*[@text='通讯录']" }
+  - click: {}
