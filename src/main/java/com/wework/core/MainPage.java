@@ -13,6 +13,7 @@ public class MainPage extends BasePage {
 
     // 跳转到通讯录tab
     public AddressBookPage toAddressBook() {
+        // 可以写java代码，也可以读取mainPO.yaml
         clickEle(addressBook);
         return new AddressBookPage(driver);
     }

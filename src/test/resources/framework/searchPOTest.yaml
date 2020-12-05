@@ -1,5 +1,11 @@
 data:
   - 产品部门
+
 steps:
-  - App: {}
+  - app: {}
+  #  - init: [ mainPage, com.wework.core.MainPage ]
   - mainPage.toAddressBook: {}
+
+#steps:
+#  - App: {}
+#  - mainPage.toAddressBook: {}

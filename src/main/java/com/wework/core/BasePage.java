@@ -14,11 +14,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class BasePage {
+    static BasePage instance = null;
+    public HashMap<String, BasePage> pages = new HashMap<>();
     public AndroidDriver driver;
     public WebDriverWait wait;
     private final String[] blackList = {"允许", "同意", "始终允许", "我知道了", "取消", "关闭", "继续"};
@@ -172,4 +178,50 @@ public class BasePage {
     public void pressBack() {
         driver.pressKey(new KeyEvent().withKey(AndroidKey.BACK));
     }
+
+    public static BasePage getInstance() {
+        if (instance == null) {
+            instance = new BasePage();
+        }
+        return instance;
+    }
+
+    // PO模式 测试步骤数据驱动之获取方法
+    public void stepRun(String method) {
+        Method[] methods = this.getClass().getMethods();
+        Method stepMethod = Arrays.stream(methods).filter(m -> m.getName().equals(method)).findFirst().get();
+        try {
+            // this.method()
+            stepMethod.invoke(this);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void poInit(String name, String className) {
+        if (name.equals("app")) {
+            // 兼容之前的driver创建方法
+            MainPage mainPage = new App().start();
+            pages.put("mainPage", mainPage);
+        } else {
+            try {
+                // 动态创建类并实例化
+                BasePage pageClass = (BasePage) Class.forName(name).newInstance();
+                pages.put(name, pageClass);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public BasePage getPO(String name) {
+        return (BasePage) pages.get(name);
+    }
+
 }

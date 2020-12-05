@@ -5,13 +5,17 @@
 #### src
 
 -  junit5
+-  wework.core
 -  wework.app
 -  wework.web
+-  wework.framework
+
 #### test
 
 -  junit5
 -  wework.app
 -  wework.web
+-  wework.framework
 
 ## 知识点
 
@@ -19,3 +23,6 @@
 - allure基本使用
 - selenium环境搭建
 - appium环境搭建
+- PO模式搭建测试框架
+- 测试数据数据驱动
+- 测试步骤数据驱动
