@@ -1,4 +1,4 @@
-package com.wiremock;
+package com.service.wiremock;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.BeforeAll;
